@@ -132,4 +132,35 @@ const products = [
     }
   ];
 
-// write code here
+  // 1. Console Log All Products
+titlePrice = products.forEach((item) => console.log(`${item.title} - ${item.price}`));
+console.log(" ");
+
+  // 2. Filter Products with Long Descriptions
+const longDescription = products.filter((item) => (item.description.replace(/\s+/g, "")).length>50);
+console.log("Products with long Descriptions");
+longDescription.forEach((item, index) => console.log(`   ${index+1}. ${item.title} - ${item.description}`));
+console.log(" ");
+
+  // 3. Filter Products by Price Range
+const priceRange = products.filter((item) => item.price>200 && item.price<400);
+console.log(`Products in Price Range $200-$400`);
+priceRange.forEach((item, index) => console.log(`   ${index+1}. ${item.title} - ${item.price}`));
+console.log(" ");
+
+  // 4. Filter Discounted Products
+const discountedItems = products.filter((item) => item.isDiscounted === true);
+console.log("Discounted Products");
+discountedItems.forEach((item, index) => console.log(`   ${index+1}. ${item.title}`));  
+console.log(" ");
+
+  // 5. Filter Products with 15% or More Discount
+const moreDiscount = products.filter((item) => parseFloat(item.discount.discountAvailable)>=15);
+console.log("Products with 15% or More Discount");
+moreDiscount.forEach((item, index) => console.log(`    ${index+1}. ${item.title}`));
+console.log(" ");
+
+  // 6. Filter New Products
+const newProducts = products.filter((item) => item.year === 2023);
+console.log("New Products");
+newProducts.forEach((item, index) => console.log(`    ${index+1}. ${item.title} - Year: ${item.year}`));
